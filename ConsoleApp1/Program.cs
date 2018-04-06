@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
+using System.IO;
 
 namespace ConsoleApp1
 {
@@ -12,7 +13,9 @@ namespace ConsoleApp1
         {
             int last;
             int length;
-            Int32.TryParse(Console.ReadLine(), out length);
+            StreamReader StrRead = new StreamReader("INPUT.TXT");
+            Int32.TryParse(StrRead.ReadLine(), out length);
+            StrRead.Close();
             //StringBuilder strfinal = new StringBuilder(length);
             String str = "";
             string t = "";
@@ -22,8 +25,8 @@ namespace ConsoleApp1
                 else str += 'R';
                 t += '*';
             }
-            Console.WriteLine(str);
-            Console.Read();
+            //Console.WriteLine(str);
+            //Console.Read();
             StringBuilder strfinal = new StringBuilder(t);
             //StringBuilder strfinal = new StringBuilder(str);
             int k = 1;
@@ -92,8 +95,10 @@ namespace ConsoleApp1
                     last = k - 1;
                 }
             }
-            Console.WriteLine(strfinal);
-            Console.ReadLine();
+            StreamWriter StrWrite = new StreamWriter("OUTPUT.TXT");
+            StrWrite.WriteLine(strfinal);
+            StrWrite.Close();
+            /*Console.ReadLine();
             Console.Read();
             int iter = 0;
             string katar = "";
@@ -107,7 +112,7 @@ namespace ConsoleApp1
             Console.WriteLine(katar);
             Console.ReadKey();
             Console.ReadLine();
-            Console.Read();
+            Console.Read();*/
         }
     }
 }
